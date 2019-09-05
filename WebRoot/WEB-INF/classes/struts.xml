@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+     
+     
+<struts>
+    <package name="liu" extends="struts-default">
+        <global-results>
+            <result name="succeed">/common/succeed.jsp</result>
+            <result name="msg">/common/msg.jsp</result>
+        </global-results>
+        
+        <action name="upload" class="com.util.upload" method="upload">
+             <result name="success">/upload/upload_re.jsp</result>
+        </action>
+        
+        
+        <action name="orgDingAdd" class="orgAction" method="orgDingAdd">
+        </action>
+        <action name="orgXiaAdd" class="orgAction" method="orgXiaAdd">
+        </action>
+        <action name="orgMana" class="orgAction" method="orgMana">
+            <result name="success">/admin/org/orgMana.jsp</result>
+        </action>
+        <action name="orgDel" class="orgAction" method="orgDel">
+        </action>
+        <action name="orgAll" class="orgAction" method="orgAll">
+            <result name="success">/admin/org/orgAll.jsp</result>
+        </action>
+        
+        
+        
+        <action name="yuangongAdd" class="yuangongAction" method="yuangongAdd">
+        </action>
+        <action name="yuangongMana" class="yuangongAction" method="yuangongMana">
+            <result name="success">/admin/yuangong/yuangongMana.jsp</result>
+        </action>
+        <action name="yuangongDel" class="yuangongAction" method="yuangongDel">
+        </action>
+        <action name="yuangongAll" class="yuangongAction" method="yuangongAll">
+            <result name="success">/admin/yuangong/yuangongAll.jsp</result>
+        </action>
+        <action name="yuangongEditMe" class="yuangongAction" method="yuangongEditMe">
+        </action>
+        
+       
+        
+        
+        <action name="gongziAdd" class="gongziAction" method="gongziAdd">
+        </action>
+        <action name="gongziMana" class="gongziAction" method="gongziMana">
+            <result>/admin/gongzi/gongziMana.jsp</result>
+        </action>
+        <action name="gongziDel" class="gongziAction" method="gongziDel">
+        </action>
+        <action name="gongziPre" class="gongziAction" method="gongziPre">
+            <result name="success">/admin/gongzi/gongziPre.jsp</result>
+        </action>
+        <action name="gongziEdit" class="gongziAction" method="gongziEdit">
+        </action>
+        
+        <action name="gongziMine" class="gongziAction" method="gongziMine">
+            <result>/admin/gongzi/gongziMine.jsp</result>
+        </action>
+        
+        
+        
+        
+        <action name="qiandaoAdd" class="qiandaoAction" method="qiandaoAdd">
+        </action>
+        
+        
+        
+        <action name="qiantuiAdd" class="qiantuiAction" method="qiantuiAdd">
+        </action>
+        
+        
+        
+        
+        <action name="chuqinTongji" class="chuqinAction" method="chuqinTongji">
+            <result>/admin/chuqin/chuqinTongji.jsp</result>
+        </action>
+        <action name="chuqinRes" class="chuqinAction" method="chuqinRes">
+            <result>/admin/chuqin/chuqinRes.jsp</result>
+        </action>
+        <action name="chuqinMine" class="chuqinAction" method="chuqinMine">
+            <result>/admin/chuqin/chuqinMine.jsp</result>
+        </action>
+        
+        
+        
+       
+        
+        
+        <action name="liuyanAdd" class="liuyanAction" method="liuyanAdd">
+        </action>
+        <action name="liuyanMana" class="liuyanAction" method="liuyanMana">
+             <result name="success">/admin/liuyan/liuyanMana.jsp</result>
+        </action>
+        <action name="liuyanDel" class="liuyanAction" method="liuyanDel">
+        </action>
+        <action name="liuyanHuifu" class="liuyanAction" method="liuyanHuifu">
+        </action>
+        <action name="liuyanDetail" class="liuyanAction" method="liuyanDetail">
+             <result name="success">/admin/liuyan/liuyanDetail.jsp</result>
+        </action>
+        <action name="liuyanAll" class="liuyanAction" method="liuyanAll">
+             <result name="success">/admin/liuyan/liuyanAll.jsp</result>
+        </action>
+        
+        
+        
+        
+        <action name="qingjiaAdd" class="qingjiaAction" method="qingjiaAdd">
+        </action>
+        <action name="qingjiaMine" class="qingjiaAction" method="qingjiaMine">
+            <result>/admin/qingjia/qingjiaMine.jsp</result>
+        </action>
+        <action name="qingjiaDel" class="qingjiaAction" method="qingjiaDel">
+        </action>
+        <action name="qingjiaMana" class="qingjiaAction" method="qingjiaMana">
+            <result>/admin/qingjia/qingjiaMana.jsp</result>
+        </action>
+        <action name="qingjiaShenhe" class="qingjiaAction" method="qingjiaShenhe">
+            <result>/admin/qingjia/qingjiaShenhe.jsp</result>
+        </action>
+    </package>
+</struts>

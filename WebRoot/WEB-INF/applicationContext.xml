@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/db_qyrg?useUnicode=true&amp;amp;amp;amp;amp;amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property><!-- 数据库的连接名 -->
+		<property name="password" value="hlisahero123"></property><!-- 数据库的连接密码，需要改成你自己的 -->
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+			    <value>com/model/TAdmin.hbm.xml</value>
+			    <value>com/model/TYuangong.hbm.xml</value>
+			    <value>com/model/TGongzi.hbm.xml</value>
+			    
+			    <value>com/model/TQiandao.hbm.xml</value>
+			    <value>com/model/TQiantui.hbm.xml</value>
+			    
+			    <value>com/model/TOrg.hbm.xml</value>
+			    <value>com/model/TLiuyan.hbm.xml</value>
+			    
+			    <value>com/model/TQingjia.hbm.xml</value>
+		    </list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	<!-- 后台的登录 -->
+	<bean id="loginService" class="com.service.loginService">
+	    <property name="adminDAO">
+			<ref bean="TAdminDAO" />
+		</property>
+		<property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	    </property>
+	</bean>
+	
+	
+	
+
+	
+	<bean id="TAdminDAO" class="com.dao.TAdminDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	<bean id="TYuangongDAO" class="com.dao.TYuangongDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="yuangongAction" class="com.action.yuangongAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="orgDAO">
+	         <ref bean="TOrgDAO"/>
+	     </property>
+	</bean>
+	
+	
+	
+		
+	
+	<bean id="TGongziDAO" class="com.dao.TGongziDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="gongziAction" class="com.action.gongziAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="gongziDAO">
+	         <ref bean="TGongziDAO"/>
+	     </property>
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="TQiandaoDAO" class="com.dao.TQiandaoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="qiandaoAction" class="com.action.qiandaoAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="qiandaoDAO">
+	         <ref bean="TQiandaoDAO"/>
+	     </property>
+	</bean>
+	
+	
+	<bean id="TQiantuiDAO" class="com.dao.TQiantuiDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="qiantuiAction" class="com.action.qiantuiAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="qiantuiDAO">
+	         <ref bean="TQiantuiDAO"/>
+	     </property>
+	     <property name="qiandaoDAO">
+	         <ref bean="TQiandaoDAO"/>
+	     </property>
+	</bean>
+	
+	
+	
+	<bean id="chuqinAction" class="com.action.chuqinAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="qiandaoDAO">
+	         <ref bean="TQiandaoDAO"/>
+	     </property>
+	     <property name="qiantuiDAO">
+	         <ref bean="TQiantuiDAO"/>
+	     </property>
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="TOrgDAO" class="com.dao.TOrgDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="orgAction" class="com.action.OrgAction" scope="prototype">
+	     <property name="orgDAO">
+	         <ref bean="TOrgDAO"/>
+	     </property>
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="TLiuyanDAO" class="com.dao.TLiuyanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="liuyanAction" class="com.action.liuyanAction" scope="prototype">
+		<property name="liuyanDAO">
+			<ref bean="TLiuyanDAO" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	<bean id="TQingjiaDAO" class="com.dao.TQingjiaDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="qingjiaAction" class="com.action.qingjiaAction" scope="prototype">
+	     <property name="yuangongDAO">
+	         <ref bean="TYuangongDAO"/>
+	     </property>
+	     <property name="qingjiaDAO">
+	         <ref bean="TQingjiaDAO"/>
+	     </property>
+	</bean>
+	
+	</beans>
